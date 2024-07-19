@@ -1,0 +1,9 @@
+public int findDuplicate(int[] nums) {
+        boolean[] map = new boolean[nums.length];
+        for(int num : nums)
+        {
+            if(map[num])return num;//found a number that is already seen
+            else map[num] = true;//new number mark as true
+        }
+        return -1;//no duplicate number found
+}
