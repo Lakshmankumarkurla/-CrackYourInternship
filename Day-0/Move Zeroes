@@ -5,7 +5,7 @@ public void moveZeroes(int[] nums) {
 
 
         while(right < nums.length)
-        {//left pointer points to only zeroes and right points to nonzero elements 
+        {//left trcaks zeroes and right points to nonzero elements 
             if(nums[right]!=0)
             {
                 int temp = nums[left];
