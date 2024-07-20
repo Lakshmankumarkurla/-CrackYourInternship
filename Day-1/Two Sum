@@ -1,0 +1,15 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer,Integer> hm = new HashMap<>();
+
+        for(int i =0; i < nums.length; i++)
+        {
+            int k = target - nums[i];
+            if(!hm.containsKey(k))hm.put(nums[i],i);//encountered first part of target
+            else return new int[]{i,hm.get(k)};//found another element which has already been in hashmap
+        }
+
+        return new int[]{-1,-1};
+
+    }
+}
