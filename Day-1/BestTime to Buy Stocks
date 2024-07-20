@@ -1,0 +1,17 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        int left = 0;
+        int ans = 0;
+        for(int right = 0; right < prices.length; right++)
+        {
+            if(prices[right] > prices[left] )//profit case
+            {
+                ans = Math.max(ans,prices[right]-prices[left]);
+            }
+            else left = right;//i found a price less than current buying price
+            //then update that
+            
+        }
+        return ans;
+    }
+}
