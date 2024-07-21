@@ -1,0 +1,16 @@
+public int maxArea(int[] t) {
+        
+        int left = 0, right = t.length-1,ans = 0;//since we want to maximum area we might assume that first index  and last ndex has maximum height.
+
+        while(left < right)
+        {
+            int w = right-left;
+            int h = Math.min(t[left],t[right]);//its a rectangle
+            ans = Math.max(ans,w*h);
+
+            if(t[left] <= t[right])left++;//move towards right
+            else right--;//move left
+            
+        }
+        return ans;
+    }
