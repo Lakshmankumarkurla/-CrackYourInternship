@@ -1,0 +1,16 @@
+public List<Integer> findDuplicates(int[] nums) {
+        ArrayList<Integer> al = new ArrayList<>();
+        int[] t = new int[nums.length+1];
+        for(int i = 0; i < nums.length; i++)
+        {
+            t[nums[i]]++;
+        }
+
+        for(int i = 0 ; i < t.length; i++)
+        {
+            if(t[i]==2)al.add(i);
+        }
+
+        return al;
+
+    }
