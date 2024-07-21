@@ -1,0 +1,20 @@
+public int subarraysDivByK(int[] arr, int k) {
+
+//when we encounter same remainder then i to j is the sum divisible by k
+        HashMap<Integer,Integer> hm = new HashMap<>();
+
+        hm.put(0, 1);
+        int count = 0,presum = 0;
+
+        for (int i : arr) {
+            presum+=i;
+            
+            int rem = presum%k;
+            if(rem < 0)rem+=k;
+            count+=hm.getOrDefault(rem,0);//if we found the same remainder again we add the count else 0
+
+            hm.put(rem, hm.getOrDefault(rem, 0)+1);//remainder we found for the first time
+        }
+
+        return count;
+    }
