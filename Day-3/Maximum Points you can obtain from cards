@@ -1,0 +1,24 @@
+public int maxScore(int[] c, int k) {
+        int ans = 0;
+        
+        int lsum = 0, rsum = 0, r = c.length-1;
+
+       for(int i = 0; i < k; i++)
+       {
+            lsum+=c[i];
+       }
+       ans = lsum;
+
+       for(int i = k-1; i>=0; i--)
+       {/* finding sum by picking x from front of array and k-x from back of array 
+*/
+//consider all combinations 
+        lsum-=c[i];
+        rsum+=c[r];
+        r--;
+        ans = Math.max(ans,lsum+rsum);
+       }
+       return ans;
+
+        // return ans;
+    }
