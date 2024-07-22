@@ -1,0 +1,44 @@
+public List<Integer> spiralOrder(int[][] m) {
+        
+
+        int rows = 0, rowend = m.length-1;
+        int cols = 0, colend = m[0].length-1;
+        List<Integer> al = new ArrayList<>();
+        while(rows<=rowend && cols<=colend)
+        {
+            //right >>>
+            for(int j = cols; j<= colend; j++)
+            {
+                al.add(m[rows][j]);
+            }
+            rows++;
+
+            //down
+            for(int i = rows; i <= rowend; i++)
+            {
+                al.add(m[i][colend]);
+            }
+            colend--;
+            
+            //left
+            if(rows<=rowend)//going left only when rowend >= rows
+            {
+                for(int j = colend; j>=cols; j--)
+                {
+                    al.add(m[rowend][j]);
+                }
+            }
+            rowend--;
+            
+            //up
+            if(cols<=colend)//going up only when cols is <= colend
+            {
+                for(int i = rowend; i >= rows;i--)
+                {
+                    al.add(m[i][cols]);
+                }
+            }
+            cols++;
+        }
+        return al;
+    }
