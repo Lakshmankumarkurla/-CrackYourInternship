@@ -1,0 +1,14 @@
+public int subarraySum(int[] nums, int k) {
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        hm.put(0,1);
+        int count = 0;
+        int presum = 0;
+        for(int i : nums)
+        {
+            presum+=i;
+            int remove = presum-k;
+            count+=hm.getOrDefault(remove,0);
+            hm.put(presum,hm.getOrDefault(presum,0)+1);
+        }
+        return count;
+    }
