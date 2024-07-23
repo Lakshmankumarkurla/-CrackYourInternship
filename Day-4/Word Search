@@ -1,0 +1,34 @@
+class Solution {
+    public boolean exist(char[][] b, String w) {
+        int n = b.length;
+        int m = b[0].length;
+        boolean[][] v = new boolean[n][m];
+        for(int i = 0; i < n; i++)
+        {
+            for(int j = 0; j < m; j++)
+            {
+                //found the starting charcter of word in b then search for remaining characters in b
+                if(w.charAt(0)==b[i][j] && search(b,v,i,j,0,w))return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean search(char[][] b, boolean[][] v,int i, int j, int idx,String w)
+    {
+        if(idx==w.length())return true;//found the word
+
+        if(i < 0 || j < 0 || i >= b.length || j>= b[0].length || b[i][j]!=w.charAt(idx) || v[i][j])return false;//moved out of bounds or character is not equal or already visited
+
+        //found the character
+        v[i][j] = true;
+        //traversing left,right,top,bottom
+        if( search(b,v,i,j+1,idx+1,w) || 
+            search(b,v,i,j-1,idx+1,w) || 
+            search(b,v,i+1,j,idx+1,w) || 
+            search(b,v,i-1,j,idx+1,w)){return true;}
+        //after searching found no other characters 
+        v[i][j] = false;
+        return false;//traverse other side
+    }
+}
