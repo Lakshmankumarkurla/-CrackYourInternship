@@ -1,0 +1,22 @@
+class Solution {
+    public int majorityElement(int[] v) {
+        // Write your code here
+        int cnt = 0,ele = 0;
+
+        for (int i = 0; i < v.length; i++) {
+            if(cnt==0){//set the majorele to ele
+                cnt++;
+                ele = v[i];
+            }
+            else if(v[i]==ele){
+                cnt++;
+            }
+            else{
+                cnt--;//cancels out by other diff element
+            }
+        }
+        //
+        
+        return ele;
+    }
+}
